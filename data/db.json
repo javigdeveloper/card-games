@@ -1,0 +1,14 @@
+{
+  "players": [
+    {
+      "name": "player 1",
+      "chips": "201",
+      "id": 1
+    },
+    {
+      "name": "player 2",
+      "chips": 1000,
+      "id": 2
+    }
+  ]
+}

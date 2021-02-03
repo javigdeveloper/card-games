@@ -1,30 +1,22 @@
-import { useState } from "react";
 import "./App.css";
 import Deck from "./Deck";
+import Player from "./Player";
+import useCustom from "./useCustom";
 
 function App() {
-  const [pics, setPics] = useState([]);
-
-  const getData = async () => {
-    try {
-      const obj = await fetch(
-        "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-      );
-      const deck = await obj.json();
-      const resp = await fetch(
-        `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=4`
-      );
-      const cards = await resp.json();
-      setPics(cards.cards);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { pics, getData, getPlayers, players } = useCustom();
 
   return (
     <div className="App">
       <h2>CARD GAME</h2>
+      <button onClick={getPlayers}>Get Players</button>
       <Deck pics={pics} getData={getData} />
+      {players &&
+        players.map((player) => (
+          <div key={player.id}>
+            <Player player={player} />
+          </div>
+        ))}
     </div>
   );
 }
