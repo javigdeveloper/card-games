@@ -1,7 +1,4 @@
-import useCustom from "./useCustom";
-
-const Player = ({ player }) => {
-  const { calculateChips } = useCustom();
+const Player = ({ player, calculateChips }) => {
   return (
     <div>
       <h1>{player.name}</h1>

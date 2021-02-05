@@ -2,12 +2,12 @@
   "players": [
     {
       "name": "player 1",
-      "chips": "201",
+      "chips": 1032,
       "id": 1
     },
     {
       "name": "player 2",
-      "chips": 1000,
+      "chips": 1006,
       "id": 2
     }
   ]

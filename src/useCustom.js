@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useCustom = () => {
   const [pics, setPics] = useState([]);
   const [players, setPlayers] = useState(null);
-
-  useEffect(() => {
-    console.log("useEffect ran");
-  }, [players]);
 
   const getData = async () => {
     try {
@@ -24,29 +20,18 @@ const useCustom = () => {
     }
   };
 
-  const calculateChips = (player) => {
-    console.log(player);
-    fetch(`http://localhost:8000/players/${player.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chips: `${player.chips + 1}` }),
-    }).then(() => {
-      console.log("new");
-      getPlayers();
-    });
-  };
-
   const getPlayers = async () => {
     try {
       const res = await fetch("http://localhost:8000/players");
       const data = await res.json();
-      console.log(data);
+      console.log(data, "from getPlayers");
       setPlayers(data);
     } catch (error) {
       console.log(error.message);
     }
   };
-  return { pics, getData, calculateChips, getPlayers, players };
+
+  return { pics, getData, getPlayers, players };
 };
 
 export default useCustom;

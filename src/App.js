@@ -6,6 +6,16 @@ import useCustom from "./useCustom";
 function App() {
   const { pics, getData, getPlayers, players } = useCustom();
 
+  const calculateChips = (player) => {
+    fetch(`http://localhost:8000/players/${player.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chips: player.chips + 1 }),
+    }).then(() => {
+      getPlayers();
+    });
+  };
+
   return (
     <div className="App">
       <h2>CARD GAME</h2>
@@ -14,7 +24,7 @@ function App() {
       {players &&
         players.map((player) => (
           <div key={player.id}>
-            <Player player={player} />
+            <Player player={player} calculateChips={calculateChips} />
           </div>
         ))}
     </div>
