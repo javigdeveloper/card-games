@@ -11,7 +11,9 @@ const useCustom = () => {
       );
       const deck = await obj.json();
       const resp = await fetch(
-        `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=4`
+        `https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=${
+          players.length * 2
+        }`
       );
       const cards = await resp.json();
       setPics(cards.cards);
@@ -24,7 +26,6 @@ const useCustom = () => {
     try {
       const res = await fetch("http://localhost:8000/players");
       const data = await res.json();
-      console.log(data, "from getPlayers");
       setPlayers(data);
     } catch (error) {
       console.log(error.message);

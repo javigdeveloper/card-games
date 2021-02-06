@@ -2,13 +2,27 @@
   "players": [
     {
       "name": "player 1",
-      "chips": 1032,
+      "chips": 998,
+      "bet": 2,
       "id": 1
     },
     {
       "name": "player 2",
-      "chips": 1006,
+      "chips": 998,
+      "bet": 2,
       "id": 2
+    },
+    {
+      "name": "player 3",
+      "chips": 998,
+      "bet": 2,
+      "id": 3
+    },
+    {
+      "name": "player 4",
+      "chips": 998,
+      "bet": 2,
+      "id": 4
     }
   ]
 }
